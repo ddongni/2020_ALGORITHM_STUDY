@@ -3,71 +3,37 @@ package week05_04_nQueen_20759577;
 import java.util.Scanner;
 
 public class Main {
-	static int[][] map;
-	static int[][] dir = {
-			{ -1, -1 }, // 북서
-			{ -1, 0 }, // 북
-			{ -1, 1 }, // 북동
-			{ 0, -1 }, // 서
-			{ 0, 1 }, // 동
-			{ 1, -1 }, // 남서
-			{ 1, 0 }, // 남
-			{ 1, 1 }// 남동
-	};
 	static int n, answer = 0;
-	static boolean[] check;
-
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		n = sc.nextInt();
-		map = new int[n][n];
-		check = new boolean[n];
-		combi(0);
+		for(int i=0;i<n;i++) {//첫 번째 퀸의 행 선택
+			int[] row = new int[n];
+			row[0] = i;
+			put(row, 0);
+		}
 		System.out.println(answer);
 	}
-
-	static void combi(int index) {
-		if (index == n) {
+	static void put(int[] row, int col) {
+		if(col==n-1) { // n-1 열까지 채웠으면 n개의 퀸 다 놓은 것임
 			answer++;
 			return;
 		}
-		int[][] copy = new int[n][n];
-		copy(map, copy);
-		for (int i = 0; i < n; i++) {
-
-		}
-		for (int i = 0; i < n; i++) { // 행 선택
-			if (check[i] || map[index][i] == 1)
-				continue;
-			check[i] = true;
-			queen(index, i);
-			combi(index + 1);
-			check[i] = false;
-			copy(copy, map);
-		}
-	}
-
-	static void copy(int[][] map, int[][] cmap) {
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < n; j++) {
-				cmap[i][j] = map[i][j];
+		for(int i=0;i<n;i++) {
+			row[col+1] = i;
+			if(isPossible(row, col+1)) {
+				// 퀸을 i행 count+1열에 놓을 수 있다면 다음 퀸 진행
+				put(row, col+1);
 			}
 		}
 	}
-
-	static void queen(int x, int y) {
-		map[x][y] = 1;
-		for (int j = 0; j < 8; j++) {
-			for (int i = 1; i < n; i++) {
-				int nx = x + i * dir[j][0];
-				int ny = y + i * dir[j][1];
-				if (nx < 0 || ny < 0 || nx >= n || ny >= n)
-					break;
-				if (map[nx][ny] != 1) {
-					map[nx][ny] = 1;
-				}
-			}
-
+	static boolean isPossible(int[] row, int col) {
+		for(int i =0;i<col;i++) {
+			// 이전에 놓은 퀸들과 행이 일치하면 놓을 수 없음
+			if(row[i] == row[col]) return false;
+			// 이전에 놓은 퀸들의 대각선에 위치하면 놓을 수 없음
+			if(Math.abs(i-col)==Math.abs(row[i]-row[col])) return false;
 		}
+		return true;
 	}
 }

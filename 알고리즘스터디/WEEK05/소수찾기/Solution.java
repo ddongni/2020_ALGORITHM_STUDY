@@ -35,8 +35,10 @@ public class Solution {
 				return;
 			boolean check = true;
 			for (int i = 2; i < intnum; i++) {
-				if (intnum % i == 0)
+				if (intnum % i == 0) {
 					check = false;
+					break;
+				}
 			}
 			if (check) {
 				set.add(intnum);
