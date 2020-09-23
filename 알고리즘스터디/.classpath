@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-<<<<<<< HEAD
-	<classpathentry kind="src" path="WEEK05"/>
-	<classpathentry kind="src" path="WEEK06"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-14">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-=======
-	<classpathentry kind="src" path="5주차_브루트포스"/>
+	<classpathentry kind="src" path="6주차_DFS_BFS"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="src" path="1주차_queue"/>
-	<classpathentry kind="src" path="2주차_stack"/>
-	<classpathentry kind="src" path="4주차_dp"/>
-	<classpathentry kind="src" path="3주차_정렬"/>
->>>>>>> refs/remotes/origin/master
 	<classpathentry kind="output" path="bin"/>
 </classpath>
