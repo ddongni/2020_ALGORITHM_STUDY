@@ -1,4 +1,4 @@
-package week06_03_서울지하철2호선_16947;
+package week06_07_서울지하철2호선_16947;
 
 import java.util.HashSet;
 import java.util.Scanner;
@@ -50,16 +50,16 @@ public class Main {
 		for (int i = 0; i < n; i++) {
 			if (i == start || arr[start][i] == 0)
 				continue; // 자기자신 제외
-			System.out.println(start+" "+i);
+//			System.out.println(start+" "+i);
 			if (set.contains(i)) {
 				if (set.size() > 2 && first == i) {
 					for (int x : set) {
 						save.add(x);
 					}
-					System.out.println("yes end!!");
+//					System.out.println("yes end!!");
 					return;
 				}
-				System.out.println("false");
+//				System.out.println("false");
 				continue;
 			}
 			find_circle(first, i, set);
@@ -68,6 +68,9 @@ public class Main {
 	}
 
 	static void dfs(int first, int start, int count) {
+		if(first==45) {
+//			System.out.println("first : "+first+" count : "+count);
+		}
 		if (count > n)
 			return;
 		for (int i = 0; i < n; i++) {
